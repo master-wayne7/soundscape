@@ -40,6 +40,8 @@ const AudioPlayer = () => {
 
     const playerCtx = useAudioPlayer();
 
+
+
     useEffect(() => {
         console.log('🔁 [AudioPlayer] context state:', playerCtx);
     }, [playerCtx]);
@@ -113,7 +115,11 @@ const AudioPlayer = () => {
                             <p className="text-sm text-gray-400 mt-1 text-center">{currentTrack.album} • {currentTrack.releaseYear}</p>
                             <div className="w-full mt-8">
                                 {audioRef.current && (
-                                    <WaveformVisualizer audioRef={audioRef as React.RefObject<HTMLAudioElement>} isFullscreen color={currentTrack.color} />
+                                    <WaveformVisualizer
+                                        audioRef={audioRef as React.RefObject<HTMLAudioElement>}
+                                        isFullscreen={isFullscreen}
+                                        color={currentTrack.color}
+                                    />
                                 )}
                             </div>
                             <div className="w-full flex items-center space-x-4 mt-6">

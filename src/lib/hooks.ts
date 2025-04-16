@@ -17,6 +17,15 @@ export function useAudioPlayer() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const audioContextRef = useRef<AudioContext | null>(null);
 
+
+  useEffect(() => {
+    if (!currentTrack && mockTracks.length > 0) {
+        console.log("Setting default track:", mockTracks[0].title);
+        setCurrentTrack(mockTracks[0]);
+        setTrackQueue(mockTracks);
+        setQueueIndex(0);
+    }
+}, [currentTrack]);
   // Initialize audio context - has to be triggered by user interaction
   const initializeAudioContext = () => {
     if (typeof window === 'undefined') return;
